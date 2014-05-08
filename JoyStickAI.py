@@ -5,37 +5,34 @@ import serial
 arduino = serial.Serial('COM9',9600)
 shell = win32com.client.Dispatch("WScript.Shell")
 
+delay = int(raw_input("Enter delay: "))
+
 while True:
     if (arduino.read() == '0'):
-        time.sleep(0.1)
+        time.sleep(delay)
         shell.sendKeys(" ")
         arduino.flushInput()
-    #endif
         
-    if (arduino.read() == '1'):
-        time.sleep(0.1)
+    elif (arduino.read() == '1'):
+        time.sleep(delay)
         shell.sendKeys("{RIGHT}")
         arduino.flushInput()
-    #endif
         
-    if (arduino.read() == '2'):
-        time.sleep(0.1)
+    elif (arduino.read() == '2'):
+        time.sleep(delay)
         shell.sendKeys("{LEFT}")
         arduino.flushInput()
-    #endif
         
-    if (arduino.read() == '3'):
-        time.sleep(0.1)
+    elif (arduino.read() == '3'):
+        time.sleep(delay)
         shell.sendKeys("{DOWN}")
         arduino.flushInput()
-    #endif
         
-    if (arduino.read() == '4'):
-        time.sleep(0.1)
+    elif (arduino.read() == '4'):
+        time.sleep(delay)
         shell.sendKeys("{UP}")
         arduino.flushInput()
-    #endif
 
-    time.sleep(0.1)
+    time.sleep(0.05)
 
 arduino.close()
